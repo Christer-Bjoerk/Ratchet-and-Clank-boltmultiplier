@@ -3,37 +3,45 @@ using TMPro;
 
 public class BoltMultiplier : MonoBehaviour
 {
-    [SerializeField] private int multiplier = 1;
+    [Header("Multiplier")]
+    [SerializeField] private float multiplier = 1;
     [SerializeField] private int maxMultiplier = 20;
+
+    [Header("Texts")]
     [SerializeField] private TMP_Text textBoltMultiplier;
+    [SerializeField] private TMP_Text textDefeatTracker;
 
-    [SerializeField] private int killCounter;
+    private int defeatTracker;
 
-    public void IncreaseKillCounter()
+    public void IncreaseDefeatTracker()
     {
-        killCounter++;
+        defeatTracker++;
+        textDefeatTracker.text = "Enemies Defeated " + defeatTracker.ToString();
+
         BoltMultiply();
     }
 
     public void BoltMultiply()
     {
+        float equation = (2f * Mathf.Sqrt(defeatTracker));
 
-        multiplier = (int)(2 * Mathf.Sqrt(killCounter));
+        multiplier = (int)(equation);
 
         // Like Ratchet & Clank, the multipler will stop at 20
         // But can be changed to your liking
-        if (multiplier >= maxMultiplier || killCounter > 100)
+        if (multiplier >= maxMultiplier)
         {
-            multiplier = 20;
+            multiplier = maxMultiplier;
         }
 
-        textBoltMultiplier.text = "Multiplier " + multiplier.ToString();
+        textBoltMultiplier.text = "Multiplier " + multiplier.ToString() +"x";
     }
 
-    public void Reset()
+    public void ResetMultiplier()
     {
         multiplier = 1;
-        killCounter = 0;
+        defeatTracker = 0;
         textBoltMultiplier.text = "Multiplier " + multiplier.ToString();
+        textDefeatTracker.text = "Enemies Defeated " + defeatTracker.ToString();
     }
 }
