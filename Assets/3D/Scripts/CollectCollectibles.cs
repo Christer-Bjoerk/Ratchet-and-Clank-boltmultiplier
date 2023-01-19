@@ -8,7 +8,7 @@ public class CollectCollectibles : MonoBehaviour
     [SerializeField] private float pickupDistance = 0.1f;
     [SerializeField] private Transform player;
 
-    [SerializeField] private List<GameObject> collectibles = new List<GameObject>();
+    private List<GameObject> collectibles = new List<GameObject>();
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +20,7 @@ public class CollectCollectibles : MonoBehaviour
 
     private void Update()
     {
-        PickupCollectibles(); 
+        PickupCollectibles();
     }
 
     private void PickupCollectibles()

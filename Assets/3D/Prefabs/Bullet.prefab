@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 842742826184609704}
   - component: {fileID: 842742826184609707}
   - component: {fileID: 842742826184609719}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &842742826184609705
 MeshFilter:
@@ -110,6 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dca6b789e64078448b612043dba5e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletDecal: {fileID: 633133920696104384, guid: cc045ed3fa183f947845630352401cf5, type: 3}
   speed: 50
-  bulletDecalOffset: 0.001
