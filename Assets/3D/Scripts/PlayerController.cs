@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform barrelTransform;
     [SerializeField] private Transform bulletParent;
     [SerializeField] private float bulletHitMissDistance = 25f;
+    [SerializeField] private LayerMask layer;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -94,7 +95,7 @@ public class PlayerController : MonoBehaviour
         // TODO - Interface
         BulletController bulletController = bullet.GetComponent<BulletController>();
 
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity))
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, layer))
         {
             bulletController.target = hit.point;
             bulletController.hit = true;

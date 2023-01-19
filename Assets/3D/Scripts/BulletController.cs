@@ -4,6 +4,7 @@ public class BulletController : MonoBehaviour
 {
     [SerializeField] private GameObject bulletDecal;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float bulletDecalOffset = 0.001f;
 
     public Vector3 target { get; set; }
     public bool hit { get; set; }
@@ -38,7 +39,9 @@ public class BulletController : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         ContactPoint contact = other.GetContact(0);
-        GameObject.Instantiate(bulletDecal, contact.point, Quaternion.LookRotation(contact.normal));
+
+        // Requires the targets to have a rigidbody to work
+        GameObject.Instantiate(bulletDecal, contact.point + contact.normal * bulletDecalOffset, Quaternion.LookRotation(contact.normal));
         
         // TODO - Object Pool
         Destroy(gameObject);
