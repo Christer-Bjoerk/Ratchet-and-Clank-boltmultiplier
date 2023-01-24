@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daed286722b036c438609ad1cd75dc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collectibleParent: {fileID: 0}
+  tag: Bullet
   collectiblePrefab: {fileID: 0}
 --- !u!65 &1715663033959755114
 BoxCollider:
