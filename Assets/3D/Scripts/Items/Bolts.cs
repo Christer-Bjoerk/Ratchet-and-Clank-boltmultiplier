@@ -10,6 +10,7 @@ public class Bolts : MonoBehaviour
     {
         if (other.CompareTag("Magnet"))
         {
+            // Event?
             BoltTracker.Instance.AddBolts(boltValue);
         }
     }

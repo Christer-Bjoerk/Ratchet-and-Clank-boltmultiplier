@@ -10,13 +10,15 @@ public class BoltMultiplierManager : PersistentSingleton<BoltMultiplierManager>
 
     [Header("Texts")]
     [SerializeField] private TMP_Text textBoltMultiplier;
+    [SerializeField] private string text;
 
     [HideInInspector]
     public int defeatTracker { get; private set; } = 0;
 
     private void Start()
     {
-        textBoltMultiplier.text = "1";
+        // Move to the UI Manager
+        textBoltMultiplier.text = "1x";
     }
 
     public void BoltMultiply()
@@ -34,13 +36,16 @@ public class BoltMultiplierManager : PersistentSingleton<BoltMultiplierManager>
             multiplier = maxMultiplier;
         }
 
-        textBoltMultiplier.text = multiplier.ToString();
+        // Move to the UI Manager
+        textBoltMultiplier.text = multiplier.ToString() + text;
     }
 
     public void ResetMultiplier()
     {
         multiplier = 1;
         defeatTracker = 0;
-        textBoltMultiplier.text = multiplier.ToString();
+
+        // Move to the UI Manager
+        textBoltMultiplier.text = multiplier.ToString() + text;
     }
 }

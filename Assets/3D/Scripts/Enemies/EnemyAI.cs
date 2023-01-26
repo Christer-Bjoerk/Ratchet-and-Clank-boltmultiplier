@@ -4,17 +4,18 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private GameObject target;
     [SerializeField] private float attackRange = 1f;
 
     [SerializeField] private GameEvent boltMultiplerGameEvent;
     [SerializeField] private GameEvent resetBoltMultiplerGameEvent;
 
     private NavMeshAgent agent;
+    private PlayerController target;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        target = FindObjectOfType<PlayerController>();
     }
 
     private void Update()
@@ -33,8 +34,8 @@ public class EnemyAI : MonoBehaviour
 
             // Damage Player
 
-            // Destroy itself
-            Destroy(this.gameObject);
+            // Return to object pool
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -42,7 +43,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
             OnDefeated();
         }
     }

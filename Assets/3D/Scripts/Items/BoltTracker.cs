@@ -7,6 +7,7 @@ public class BoltTracker : PersistentSingleton<BoltTracker>
 
     public void AddBolts(int value)
     {
+        // Event
         currentBolts += value * BoltMultiplierManager.Instance.multiplier;
     }
 }

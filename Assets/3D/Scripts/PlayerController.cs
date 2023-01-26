@@ -5,10 +5,13 @@ using Cursor = UnityEngine.Cursor;
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Player Settings")]
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private float rotationSpeed = 5f;
+
+    [Header("Weapon Settings")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform barrelTransform;
     [SerializeField] private Transform bulletParent;
@@ -26,6 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private Transform cameraTransform;
 
+    private ObjectPoolManager poolManager;
+
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
@@ -37,7 +42,10 @@ public class PlayerController : MonoBehaviour
 
         cameraTransform = Camera.main.transform;
 
+        // Suggestion: Accessibility setting
         Cursor.lockState = CursorLockMode.Locked;
+
+        poolManager = FindObjectOfType<ObjectPoolManager>();
     }
 
     private void OnEnable()
@@ -58,15 +66,15 @@ public class PlayerController : MonoBehaviour
     private void PlayerMovement()
     {
         groundedPlayer = controller.isGrounded;
+
         if (groundedPlayer && playerVelocity.y < 0)
-        {
             playerVelocity.y = 0f;
-        }
 
         Vector2 input = moveAction.ReadValue<Vector2>();
 
         Vector3 move = new Vector3(input.x, 0, input.y);
 
+        // Take into consideration of the camera direction
         move = move.x * cameraTransform.right.normalized + move.z * cameraTransform.forward.normalized;
         move.y = 0f;
 
@@ -74,9 +82,7 @@ public class PlayerController : MonoBehaviour
 
         // Changes the height position of the player..
         if (jumpAction.triggered && groundedPlayer)
-        {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-        }
 
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
@@ -89,13 +95,16 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hit;
 
-        // TODO - Object pool
-        GameObject bullet = GameObject.Instantiate(bulletPrefab, barrelTransform.position, Quaternion.identity, bulletParent);
+        GameObject bullet = poolManager.GetGameObject(bulletPrefab);
         // TODO - Interface
         BulletController bulletController = bullet.GetComponent<BulletController>();
 
+        // Spawn at the tip of the gun
+        bullet.transform.SetPositionAndRotation(barrelTransform.position, Quaternion.identity);
+
         if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, Mathf.Infinity, layer))
         {
+            // Suggestion: Event based
             bulletController.target = hit.point;
             bulletController.hit = true;
         }

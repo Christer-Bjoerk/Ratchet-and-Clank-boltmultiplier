@@ -5,16 +5,17 @@ using TMPro;
 
 public class UIManager : PersistentSingleton<UIManager> 
 {
-    [SerializeField] private TMP_Text BoltText;
-
+    [SerializeField] private TMP_Text boltText;
 
     private void Start()
     {
-        BoltText.text = BoltTracker.Instance.currentBolts.ToString();
+        boltText.text = BoltTracker.Instance.currentBolts.ToString();
     }
 
     private void Update()
     {
-        BoltText.text = BoltTracker.Instance.currentBolts.ToString();
+        // TODO: ToString allocates too much in update
+        // Event based
+        boltText.text = BoltTracker.Instance.currentBolts.ToString();
     }
 }

@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -7,11 +9,11 @@ public class BulletController : MonoBehaviour
     public Vector3 target { get; set; }
     public bool hit { get; set; }
 
-    private float timeToDestroy = 3f;
+    private float timeToDeactivate = 3f;
 
     private void OnEnable()
     {
-        Destroy(gameObject, timeToDestroy);
+        StartCoroutine(DeactiveBullet());
     }
 
     private void Update()
@@ -29,14 +31,22 @@ public class BulletController : MonoBehaviour
     {
         if (!hit && Vector3.Distance(transform.position, target) < 0.01f)
         {
-            // Object Pool
-            Destroy(gameObject);
+            this.gameObject.SetActive(false);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // TODO - Object Pool
-        Destroy(gameObject);
+        this.gameObject.SetActive(false);
+    }
+
+
+    private IEnumerator DeactiveBullet()
+    {
+        yield return new WaitForSeconds(timeToDeactivate);
+
+        this.gameObject.SetActive(false);
+
+        yield return null;
     }
 }
