@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
 using Cursor = UnityEngine.Cursor;
 
 [RequireComponent(typeof(CharacterController), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
-    
     [SerializeField] private float playerSpeed = 2.0f;
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
@@ -51,9 +49,10 @@ public class PlayerController : MonoBehaviour
     {
         shootAction.performed -= _ => ShootGun();
     }
-    void Update()
+
+    private void Update()
     {
-        PlayerMovement();   
+        PlayerMovement();
     }
 
     private void PlayerMovement()
@@ -106,5 +105,4 @@ public class PlayerController : MonoBehaviour
             bulletController.hit = false;
         }
     }
-
 }

@@ -34,8 +34,8 @@ public class BulletController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
-    {        
+    private void OnTriggerEnter(Collider other)
+    {
         // TODO - Object Pool
         Destroy(gameObject);
     }

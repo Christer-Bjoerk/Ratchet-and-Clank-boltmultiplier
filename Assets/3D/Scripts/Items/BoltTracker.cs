@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoltTracker : PersistentSingleton<BoltTracker>
@@ -9,7 +7,6 @@ public class BoltTracker : PersistentSingleton<BoltTracker>
 
     public void AddBolts(int value)
     {
-        currentBolts += value;
+        currentBolts += value * BoltMultiplierManager.Instance.multiplier;
     }
-
 }
