@@ -1,6 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,8 +6,10 @@ public class SwitchVCAM : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private int priorityBoostAmount = 10;
-    
+
+    [Header("Reticles")]
     [SerializeField] private Canvas thirdPersonCanvas;
+
     [SerializeField] private Canvas aimPersonCanvas;
 
     private CinemachineVirtualCamera virtualCamera;
@@ -20,6 +20,7 @@ public class SwitchVCAM : MonoBehaviour
         aimAction.performed += _ => StartAim();
         aimAction.canceled += _ => CancelAim();
     }
+
     private void OnDisable()
     {
         aimAction.performed -= _ => StartAim();

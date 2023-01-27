@@ -1,21 +1,25 @@
-using TMPro;
 using UnityEngine;
 
 public class BoltMultiplierManager : PersistentSingleton<BoltMultiplierManager>
 {
-
     [Header("Multiplier")]
     [SerializeField] private int maxMultiplier = 20;
 
+    [Header("Variables")]
     [SerializeField] private IntVariable multiplier;
+
     [SerializeField] private IntVariable enemyDefeated;
 
-    public void BoltMultiply()
+    /// <summary>
+    /// Update the multiplier based on
+    /// how many enemies are defeated without being hit
+    /// </summary>
+    public void UpdateBoltMultiplier()
     {
+        // +=
         enemyDefeated.ApplyChange(1);
-
         float equation = (2f * Mathf.Sqrt(enemyDefeated.Value));
-
+        // =
         multiplier.SetValue((int)equation);
 
         // Like Ratchet & Clank, the multipler will stop at 20
@@ -26,6 +30,7 @@ public class BoltMultiplierManager : PersistentSingleton<BoltMultiplierManager>
 
     public void ResetMultiplier()
     {
-        multiplier.Value = 1;
+        multiplier.SetValue(1);
+        enemyDefeated.SetValue(0);
     }
 }

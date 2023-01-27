@@ -4,13 +4,16 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAI : MonoBehaviour
 {
+    [Header("Enemy Settings")]
     [SerializeField] private float attackRange = 1f;
 
+    [Header("Events")]
+    [SerializeField] private GameEvent multiplierEvent;
+
+    [SerializeField] private GameEvent resetMultiplierEvent;
 
     private NavMeshAgent agent;
     private PlayerController target;
-
-    [SerializeField] private GameEvent gameEvent;
 
     private void Awake()
     {
@@ -23,6 +26,9 @@ public class EnemyAI : MonoBehaviour
         AttackTarget();
     }
 
+    /// <summary>
+    /// Attacks by kamikazing the player
+    /// </summary>
     public void AttackTarget()
     {
         agent.destination = target.transform.position;
@@ -30,6 +36,7 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
         {
             // Reset bolt multiplier
+            resetMultiplierEvent.TriggerEvent();
 
             // Damage Player
 
@@ -38,15 +45,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
+            // Return to object pool
             this.gameObject.SetActive(false);
 
             // Update Bolt multiplier
-            gameEvent.TriggerEvent();
+            multiplierEvent.TriggerEvent();
         }
     }
 }

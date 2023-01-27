@@ -3,19 +3,13 @@ using UnityEngine;
 
 public class CollectCollectibles : MonoBehaviour
 {
+    [Header("Item Settings")]
     [SerializeField] private float speed = 5f;
+
     [SerializeField] private float pickupDistance = 0.1f;
     [SerializeField] private Transform player;
 
     private List<GameObject> collectibles = new List<GameObject>();
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Bolt"))
-        {
-            collectibles.Add(other.gameObject);
-        }
-    }
 
     private void Update()
     {
@@ -30,9 +24,16 @@ public class CollectCollectibles : MonoBehaviour
 
             if (Vector3.Distance(collectibles[i].transform.position, player.position) <= pickupDistance)
             {
+                // TODO - Object pool
                 Destroy(collectibles[i].gameObject);
                 collectibles.Remove(collectibles[i]);
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bolt"))
+            collectibles.Add(other.gameObject);
     }
 }

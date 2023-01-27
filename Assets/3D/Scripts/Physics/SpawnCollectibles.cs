@@ -8,6 +8,7 @@ public class SpawnCollectibles : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            // Object pool
             Instantiate(collectiblePrefab, transform.position, Quaternion.identity);
             this.gameObject.SetActive(false);
         }

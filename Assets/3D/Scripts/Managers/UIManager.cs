@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class UIManager : PersistentSingleton<UIManager> 
+public class UIManager : PersistentSingleton<UIManager>
 {
-
     [Header("Texts")]
     [SerializeField] private TMP_Text boltText;
+
     [SerializeField] private TMP_Text textBoltMultiplier;
     [SerializeField] private string text;
 
     [Header("Variables")]
     [SerializeField] private IntVariable boltValue;
+
     [SerializeField] private IntVariable multiplier;
     [SerializeField] private IntVariable collectedBolts;
 

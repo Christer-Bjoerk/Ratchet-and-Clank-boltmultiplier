@@ -21,25 +21,28 @@ public class BulletController : MonoBehaviour
         BulletMovement();
     }
 
+    /// <summary>
+    /// Bullet move in the direction of
+    /// the raycasted target
+    /// </summary>
     private void BulletMovement()
     {
         transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-        DestroyBullet();
+        ReuseBullet();
     }
 
-    private void DestroyBullet()
+
+    private void ReuseBullet()
     {
         if (!hit && Vector3.Distance(transform.position, target) < 0.01f)
-        {
+            // Return to the object pool
             this.gameObject.SetActive(false);
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         this.gameObject.SetActive(false);
     }
-
 
     private IEnumerator DeactiveBullet()
     {

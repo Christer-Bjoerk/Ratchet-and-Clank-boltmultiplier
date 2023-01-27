@@ -7,12 +7,14 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Player Settings")]
     [SerializeField] private float playerSpeed = 2.0f;
+
     [SerializeField] private float jumpHeight = 1.0f;
     [SerializeField] private float gravityValue = -9.81f;
     [SerializeField] private float rotationSpeed = 5f;
 
     [Header("Weapon Settings")]
     [SerializeField] private GameObject bulletPrefab;
+
     [SerializeField] private Transform barrelTransform;
     [SerializeField] private Transform bulletParent;
     [SerializeField] private float bulletHitMissDistance = 25f;
@@ -96,7 +98,7 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
 
         GameObject bullet = poolManager.GetGameObject(bulletPrefab);
-        // TODO - Interface
+
         BulletController bulletController = bullet.GetComponent<BulletController>();
 
         // Spawn at the tip of the gun

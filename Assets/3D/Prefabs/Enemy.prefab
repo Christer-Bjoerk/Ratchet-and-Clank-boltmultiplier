@@ -113,7 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
-  gameEvent: {fileID: 11400000, guid: bce483c579c1b2b49928b9195c84518c, type: 2}
+  multiplierEvent: {fileID: 11400000, guid: bce483c579c1b2b49928b9195c84518c, type: 2}
+  resetMultiplierEvent: {fileID: 11400000, guid: 0229b95205e42ae41a6581d79f645249, type: 2}
 --- !u!195 &4946169520348030138
 NavMeshAgent:
   m_ObjectHideFlags: 0
