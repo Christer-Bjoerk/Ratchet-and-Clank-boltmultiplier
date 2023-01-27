@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Bolts : MonoBehaviour
 {
-    [SerializeField] private int boltValue = 2;
+    [SerializeField] private GameEvent gameEvent;
+
+    [SerializeField] private IntVariable boltValue;
+    [SerializeField] private IntReference boltReference;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Magnet"))
         {
-            // Event?
-            BoltTracker.Instance.AddBolts(boltValue);
+            gameEvent.TriggerEvent();
         }
     }
 }

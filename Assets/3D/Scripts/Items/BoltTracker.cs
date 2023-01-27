@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class BoltTracker : PersistentSingleton<BoltTracker>
 {
-    [HideInInspector]
-    public int currentBolts { get; private set; } = 0;
+    [SerializeField] private IntVariable boltValue;
+    [SerializeField] private IntVariable multiplier;
+    [SerializeField] private IntVariable collectedBolts;
 
-    public void AddBolts(int value)
+    public void AddBolts()
     {
-        // Event
-        currentBolts += value * BoltMultiplierManager.Instance.multiplier;
+        collectedBolts.ApplyChange(boltValue.Value * multiplier.Value);
     }
 }

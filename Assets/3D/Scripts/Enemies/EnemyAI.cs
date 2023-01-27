@@ -6,11 +6,11 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private float attackRange = 1f;
 
-    [SerializeField] private GameEvent boltMultiplerGameEvent;
-    [SerializeField] private GameEvent resetBoltMultiplerGameEvent;
 
     private NavMeshAgent agent;
     private PlayerController target;
+
+    [SerializeField] private GameEvent gameEvent;
 
     private void Awake()
     {
@@ -29,8 +29,7 @@ public class EnemyAI : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
         {
-            // Reset Bolt Multiplier
-            resetBoltMultiplerGameEvent.TriggerEvent();
+            // Reset bolt multiplier
 
             // Damage Player
 
@@ -39,18 +38,15 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
             this.gameObject.SetActive(false);
-            OnDefeated();
-        }
-    }
 
-    public void OnDefeated()
-    {
-        // Increase bolt multiplier
-        boltMultiplerGameEvent.TriggerEvent();
+            // Update Bolt multiplier
+            gameEvent.TriggerEvent();
+        }
     }
 }

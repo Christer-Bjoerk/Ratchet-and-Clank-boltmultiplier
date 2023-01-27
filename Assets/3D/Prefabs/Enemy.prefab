@@ -113,8 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRange: 1
-  boltMultiplerGameEvent: {fileID: 11400000, guid: eb32a2bf0725dff4fb2167e267a156ef, type: 2}
-  resetBoltMultiplerGameEvent: {fileID: 11400000, guid: 0229b95205e42ae41a6581d79f645249, type: 2}
+  gameEvent: {fileID: 11400000, guid: bce483c579c1b2b49928b9195c84518c, type: 2}
 --- !u!195 &4946169520348030138
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -145,7 +144,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4946169520348030141}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2

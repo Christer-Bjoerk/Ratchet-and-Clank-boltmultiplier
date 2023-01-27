@@ -98,7 +98,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49482190908c45848bc420b480a2bbd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boltValue: 2
+  gameEvent: {fileID: 11400000, guid: eb32a2bf0725dff4fb2167e267a156ef, type: 2}
+  boltValue: {fileID: 11400000, guid: 49003e7d21761b14191f54a072dc66a2, type: 2}
+  boltReference:
+    UseConstant: 1
+    ConstantValue: 2
+    Variable: {fileID: 0}
 --- !u!135 &7358074072230934389
 SphereCollider:
   m_ObjectHideFlags: 0
