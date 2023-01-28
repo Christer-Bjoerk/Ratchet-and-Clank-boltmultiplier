@@ -109,8 +109,30 @@
                 },
                 {
                     "name": "",
+                    "id": "9d495741-004b-4427-9e61-07eb50ceb463",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6977e50d-6840-43d1-80f7-a45f80c5c60c",
                     "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9bc6a87b-86a7-492d-8afe-b4567da7c3f8",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -131,6 +153,17 @@
                 },
                 {
                     "name": "",
+                    "id": "880d143b-c880-40b3-8ca8-4c703e0ddf9f",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e9f4603d-05ca-4707-bee4-4ea0746beac6",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -142,8 +175,30 @@
                 },
                 {
                     "name": "",
+                    "id": "eaa50699-47ee-4d38-9ae9-aaa95039a049",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "e24590de-5b1a-4ddd-8405-adbf3591668e",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "27a41ed5-6bf0-4238-b42e-bff42e314586",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
