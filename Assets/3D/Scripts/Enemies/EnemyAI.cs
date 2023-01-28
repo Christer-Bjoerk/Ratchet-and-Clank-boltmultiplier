@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(ReturnObject))]
 public class EnemyAI : MonoBehaviour
 {
     [Header("Enemy Settings")]
@@ -9,7 +9,6 @@ public class EnemyAI : MonoBehaviour
 
     [Header("Events")]
     [SerializeField] private GameEvent multiplierEvent;
-
     [SerializeField] private GameEvent resetMultiplierEvent;
 
     private NavMeshAgent agent;

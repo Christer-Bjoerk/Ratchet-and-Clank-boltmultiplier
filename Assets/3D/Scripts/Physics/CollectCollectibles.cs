@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ReturnObject))]
 public class CollectCollectibles : MonoBehaviour
 {
     [Header("Item Settings")]
@@ -24,8 +25,8 @@ public class CollectCollectibles : MonoBehaviour
 
             if (Vector3.Distance(collectibles[i].transform.position, player.position) <= pickupDistance)
             {
-                // TODO - Object pool
-                Destroy(collectibles[i].gameObject);
+                // Object pool
+                collectibles[i].gameObject.SetActive(false);
                 collectibles.Remove(collectibles[i]);
             }
         }

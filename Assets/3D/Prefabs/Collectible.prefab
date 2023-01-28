@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7358074072230934384}
   - component: {fileID: 7358074072230934387}
   - component: {fileID: 7358074072230934386}
+  - component: {fileID: 2865527415308618212}
   - component: {fileID: 1421327146820384551}
   - component: {fileID: 7358074072230934389}
   - component: {fileID: 6593010872521931471}
@@ -86,6 +87,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2865527415308618212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358074072230934388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b7096bf6f2e5004e92cee69490b09a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1421327146820384551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49482190908c45848bc420b480a2bbd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: eb32a2bf0725dff4fb2167e267a156ef, type: 2}
+  updateBoltsEvent: {fileID: 11400000, guid: eb32a2bf0725dff4fb2167e267a156ef, type: 2}
   boltValue: {fileID: 11400000, guid: 49003e7d21761b14191f54a072dc66a2, type: 2}
   boltReference:
     UseConstant: 1

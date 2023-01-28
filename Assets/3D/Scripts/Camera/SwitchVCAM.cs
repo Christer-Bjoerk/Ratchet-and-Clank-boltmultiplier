@@ -4,12 +4,12 @@ using UnityEngine.InputSystem;
 
 public class SwitchVCAM : MonoBehaviour
 {
+    [Header("Camera Configuration")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private int priorityBoostAmount = 10;
 
     [Header("Reticles")]
     [SerializeField] private Canvas thirdPersonCanvas;
-
     [SerializeField] private Canvas aimPersonCanvas;
 
     private CinemachineVirtualCamera virtualCamera;

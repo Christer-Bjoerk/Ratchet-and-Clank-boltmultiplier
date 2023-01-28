@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(ReturnObject))]
 public class BulletController : MonoBehaviour
 {
+    [Header("Bullet Configuration")]
     [SerializeField] private float speed = 5f;
 
     public Vector3 target { get; set; }
