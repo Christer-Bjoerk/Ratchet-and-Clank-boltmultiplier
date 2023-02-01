@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform barrelTransform;
     [SerializeField] private Transform bulletParent;
+
+    [SerializeField] private float cooldown = 0.4f;
     [SerializeField] private float bulletHitMissDistance = 25f;
     [SerializeField] private LayerMask layer;
 
@@ -32,6 +34,9 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
 
     private ObjectPoolManager poolManager;
+
+    private bool canFire = false;
+    private float timer = 0;
 
     private void Awake()
     {
@@ -52,17 +57,27 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        shootAction.performed += _ => ShootGun();
+        //shootAction.started += _ => ShootGun();
     }
 
     private void OnDisable()
     {
-        shootAction.performed -= _ => ShootGun();
+        //shootAction.canceled -= _ => ShootGun();
     }
 
     private void Update()
     {
         PlayerMovement();
+
+        canFire = shootAction.IsPressed();
+
+        timer += Time.deltaTime;
+
+        if (canFire && timer >= cooldown)
+        {
+            ShootGun();
+            timer = 0;
+        }
     }
 
     private void PlayerMovement()

@@ -47,7 +47,7 @@
                     "id": "16d04888-4d80-4b6d-a261-9d0c9ac80bb0",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=1)",
                     "initialStateCheck": false
                 }
             ],
@@ -134,7 +134,7 @@
                     "id": "9bc6a87b-86a7-492d-8afe-b4567da7c3f8",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "groups": "",
                     "action": "Look",
                     "isComposite": false,
